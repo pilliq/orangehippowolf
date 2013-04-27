@@ -80,7 +80,7 @@ class Account_Controller extends Base_Controller {
 	    'first_name' => Input::get('first_name', 'John'),
 	    'last_name' => Input::get('last_name', 'Doe'),
 	    'ruid' => Input::get('ruid', '000000000'),
-	    'netid' => Input::get('netid', 'jdoe'),
+	    'username' => Input::get('netid', 'jdoe'),
 	    'email' => Input::get('email', 'jdoe@gmail.com'),
 	    'password' => Input::get('password')
 	);
