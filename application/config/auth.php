@@ -16,7 +16,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'eloquent',
+	'driver' => 'rawauth',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -71,3 +71,4 @@ return array(
 	'table' => 'users',
 
 );
+
