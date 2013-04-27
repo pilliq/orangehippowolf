@@ -14,18 +14,16 @@
 <body>
     <div class="navbar">
 	<div class="navbar-inner">
-	    <div class="container-fluid">
+	    <div class="container">
 		<a class="brand" href="{{ URL::to_route('index') }}">Perms</a>
-		<ul class="nav">
 
 		    @yield('top-nav')
 
-		</ul>
 	    </div>
 	</div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
 	@yield('content')
     </div>
 
