@@ -32,7 +32,18 @@
 |
 */
 
-Route::get('/', array('as' => 'index', 'before' => 'auth', 'uses' => 'account@profile'));
+Route::group(array('before' => 'auth'), function() {
+    Route::get('/', array('as' => 'index', 'do' => function() {
+	if (Session::get('instructor') == 1) {
+	    return View::make('instructor/home');
+	} else {
+	    return View::make('student/home');
+	}
+    }));
+
+    Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
+});
+
 Route::get('signup', array('as' => 'signup', 'uses' => 'account@signup'));
 Route::get('signup/instructor', array('as' => 'signup_instructor', 'uses' => 'account@signup_instructor'));
 Route::get('signup/student', array('as' => 'signup_student', 'uses' => 'account@signup_student'));
