@@ -14,7 +14,7 @@ class User {
 	Log::write('debug', 'created_pass: '.$password);
 
 	return DB::query("INSERT INTO user(username,password,email,first_name,last_name,instructor) 
-			  VALUES('$username','$password','$email','$first_name','$last_name','$instructor');");
+			  VALUES('$username','$password','$email','$first_name','$last_name',b'$instructor');");
     }
     
     public static function get($username, $pass=null) {
