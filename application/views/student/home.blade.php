@@ -1,4 +1,4 @@
-@layout('session')
+@layout('student/base')
 
 @section('title')
     Requests Professor
@@ -14,6 +14,7 @@
 		Requests
 	    </h1>
     </div>
+    <button class="btn btn-primary">Create a new request</button>
     <table class="table table-hover">
     <thead>
 	<tr>
