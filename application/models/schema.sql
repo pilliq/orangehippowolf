@@ -18,7 +18,8 @@ CREATE TABLE student (
     gradDate date,
     majorCreditsCompleted int(11),
     creditsCompleted int(11),
-    gpa decimal(10,3)
+    gpa decimal(10,3),
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE instructor (
@@ -26,3 +27,12 @@ CREATE TABLE instructor (
     netid varchar(127) references user,
     department varchar(127)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE messages (
+    sender int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
+    receiver int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
+    subject varchar(63),
+    body varchar (1023),
+    created timestamp not null default CURRENT_TIMESTAMP primary key,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
