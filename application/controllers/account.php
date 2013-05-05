@@ -25,7 +25,7 @@ class Account_Controller extends Base_Controller {
 	    //return ($user->instructor==1)?Redirect::to_route('index');
 	    return Redirect::to_route('index');
 	} else {
-	    return Redirect::to_route('login')->with('status', 'Error logging in');
+	    return Redirect::to_route('login')->with('error', 'Username or password is incorrect');
 	}
     }
 
@@ -52,7 +52,7 @@ class Account_Controller extends Base_Controller {
 	$password = Input::get('password');
 	$password2 = Input::get('password2');
 	if ($password != $password2 || $password == '') {
-	    return Redirect::to_route('login')->with('status', 'Password error');
+	    return Redirect::to_route('signup_instructor')->with('error', 'Passwords do not match');
 	}
 
 	$data = array(
@@ -73,7 +73,7 @@ class Account_Controller extends Base_Controller {
 	$password = Input::get('password');
 	$password2 = Input::get('password2');
 	if ($password != $password2 || $password == '') {
-	    return Redirect::to_route('login')->with('status', 'Password error');
+	    return Redirect::to_route('signup_student')->with('error', 'Passwords do not match');
 	}
 
 	$data = array(
