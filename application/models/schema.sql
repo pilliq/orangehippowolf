@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
+//one for messages?
 
 CREATE TABLE user (
     username varchar(127) primary key, /* netid */
@@ -33,6 +34,6 @@ CREATE TABLE messages (
     receiver int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
     subject varchar(63),
     body varchar (1023),
-    created timestamp not null default CURRENT_TIMESTAMP primary key,
+    msgtime not null default CURRENT_TIMESTAMP primary key
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
