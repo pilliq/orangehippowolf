@@ -47,10 +47,13 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('messages/sent', array('as' => 'messages_sent', 'uses' => 'messenger@messages_sent'));
     Route::get('messages/received', array('as' => 'messages_received', 'uses' => 'messenger@messages_received'));
     
-
+    //Route::post(k
 
 });
 
+Route::get('tmp', function() {
+    return View::make('tmp');
+});
 Route::get('signup', array('as' => 'signup', 'uses' => 'account@signup'));
 Route::get('signup/instructor', array('as' => 'signup_instructor', 'uses' => 'account@signup_instructor'));
 Route::get('signup/student', array('as' => 'signup_student', 'uses' => 'account@signup_student'));

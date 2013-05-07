@@ -30,10 +30,11 @@ CREATE TABLE instructor (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE messages (
+    mid int(11) unsigned NOT NULL AUTO_INCREMENT primary key,
     sender int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
     receiver int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
     subject varchar(63),
     body varchar (1023),
-    msgtime not null default CURRENT_TIMESTAMP primary key
+    created timestamp not null default CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
