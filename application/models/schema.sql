@@ -40,7 +40,7 @@ CREATE TABLE messages (
     receiver varchar(127) NOT NULL,
     subject varchar(63),
     body text,
-    msgtime timestamp not null default CURRENT_TIMESTAMP,
+    created timestamp not null default CURRENT_TIMESTAMP,
     FOREIGN KEY (sender) REFERENCES user (username),
     FOREIGN KEY (receiver) REFERENCES user (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
