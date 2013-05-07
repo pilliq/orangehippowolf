@@ -22,15 +22,15 @@ class Message_Controller extends Base_Controller {
 	    'receiver' => Input::get('receiver'),
 	    'created' => Input:get('created'),
 	    Message::create($data),
-	    return View::make('sent');
+	    return View::make('messages_sent');
 	}
 
     public function get_sent(){
-	    return View::make('sent');
+	    return View::make('messages_sent');
     }	
 
     public function get_received(){
-	    return View::make('recieved');
+	    return View::make('messages_received');
     }
 
 }    
