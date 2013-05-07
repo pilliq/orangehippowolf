@@ -47,7 +47,7 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('/messages/sent', array('as' => 'messages_sent', 'uses' => 'messages@sent'));
     Route::get('/messages/received', array('as' => 'messages_received', 'uses' => 'messages@received'));
     
-    Route::post('
+    Route::post('/messages/compose', array('uses' => 'messages@compose'));
 
 });
 
