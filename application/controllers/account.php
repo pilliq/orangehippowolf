@@ -75,14 +75,19 @@ class Account_Controller extends Base_Controller {
 	if ($password != $password2 || $password == '') {
 	    return Redirect::to_route('signup_student')->with('error', 'Passwords do not match');
 	}
-
+	
 	$data = array(
 	    'first_name' => Input::get('first_name', 'John'),
 	    'last_name' => Input::get('last_name', 'Doe'),
 	    'ruid' => Input::get('ruid', '000000000'),
 	    'username' => Input::get('netid', 'jdoe'),
 	    'email' => Input::get('email', 'jdoe@gmail.com'),
-	    'password' => Input::get('password')
+	    'password' => Input::get('password'),
+	    'gradmonth' => Input::get('gradmonth', 'January'),
+	    'gradyear' => Input::get('gradyear', 2013),
+	    'gpa' => Input::get('gpa', 0.000),
+	    'credits' => Input::get('credits', 0),
+	    'major_credits' => Input::get('major_credits', 0)
 	);
 
 	$result = Student::create($data);
