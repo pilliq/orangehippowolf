@@ -35,12 +35,15 @@
 Route::group(array('before' => 'auth'), function() {
     Route::get('/', array('as' => 'index', 'do' => function() {
 	if (Session::get('instructor') == 1) {
-	    return View::make('instructor/home');
+	    return Redirect::to_route('requests');
 	} else {
 	    return View::make('student/home');
 	}
     }));
 
+    Route::get('/requests', array('as' => 'requests', 'uses' => 'instructor@requests'));
+    Route::get('/courses', array('as' => 'courses', 'uses' => 'instructor@courses'));
+    Route::get('/courses/create', array('as' => 'create_courses', 'uses' => 'instructor@create_course'));
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
 });
 
