@@ -8,7 +8,15 @@ class Student extends User {
 
 	$ruid = $data['ruid'];
 	$username = $data['username'];
-	DB::query("INSERT INTO student(ruid,netid) values('$ruid','$username');");
+	$gradmonth = $data['gradmonth'];
+	$gradyear = $data['gradyear'];
+	$major_credits = $data['major_credits'];
+	$credits = $data['credits'];
+	$gpa = $data['gpa'];
+
+	$query = "INSERT INTO student(ruid,netid,gradMonth,gradYear,majorCredits,credits,gpa) values($ruid,'$username','$gradmonth','$gradyear',$major_credits,$credits,$gpa);";
+	Log::write('debug', $query);
+	return DB::query($query);
     }
 }
 
