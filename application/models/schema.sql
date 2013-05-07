@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
+DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS building;
 DROP TABLE IF EXISTS course_offering;
@@ -31,6 +32,14 @@ CREATE TABLE instructor (
     tid int(11) unsigned NOT NULL AUTO_INCREMENT primary key,
     netid varchar(127) references user,
     department varchar(127)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE messages (
+    sender int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
+    receiver int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
+    subject varchar(63),
+    body varchar (1023),
+    msgtime not null default CURRENT_TIMESTAMP primary key
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE course (
