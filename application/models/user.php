@@ -1,7 +1,5 @@
 <?php
-    
 class User {
-
     public static function create($data) {
 	$username = $data['username'];
 	$password = Hash::make($data['password']);

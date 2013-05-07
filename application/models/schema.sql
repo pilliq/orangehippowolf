@@ -41,8 +41,8 @@ CREATE TABLE messages (
     mid int(11) unsigned NOT NULL AUTO_INCREMENT primary key,
     sender int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
     receiver int(11) unsigned NOT NULL FOREIGN KEY REFERENCES user (username),
-    subject varchar(63),
-    body varchar (1023),
+    subject varchar(64),
+    body varchar (1024),
     created timestamp not null default CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
