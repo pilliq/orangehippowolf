@@ -42,10 +42,10 @@ Route::group(array('before' => 'auth'), function() {
     }));
 
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
-    Route::get('/messages', array('as' => 'messages', 'uses' => 'messenger@messages'));
-    Route::get('messages/compose', array('as' => 'messages_compose', 'uses' => 'messenger@messages_compose'));
-    Route::get('messages/sent', array('as' => 'messages_sent', 'uses' => 'messenger@messages_sent'));
-    Route::get('messages/received', array('as' => 'messages_received', 'uses' => 'messenger@messages_received'));
+    Route::get('/messages', array('as' => 'messages', 'uses' => 'messages@messages'));
+    Route::get('messages/compose', array('as' => 'compose', 'uses' => 'messages@compose'));
+    Route::get('messages/sent', array('as' => 'sent', 'uses' => 'messages@sent'));
+    Route::get('messages/received', array('as' => 'received', 'uses' => 'messages@received'));
     
     //Route::post(k
 

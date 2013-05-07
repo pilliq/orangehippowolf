@@ -1,27 +1,19 @@
 <?php
 
-class Messenger_Controller extends Base_Controller {
+class Message_Controller extends Base_Controller {
     
     public $restful = true;
 
     public function get_messages(){  
-	return View::make('messenger/messages');				
+	return View::make('messages');				
     }
 
-
-
     public function get_compose(){
-	return View::make('messenger/compose');
+	return View::make('messages_compose');
 
     }
 
     public function post_compose(){
-
-	$creds = 'receiver' => Input::get('receiver');
-
-	if(Auth::attempt($creds)){
-	    //see if receiver is in the database...
-	$user = Auth::retrieve(
 	$data=array(
 	    'mid' => Input::get('mid'),
 	    'subject' => Input::get('subject', 'no subject'),
@@ -29,15 +21,9 @@ class Messenger_Controller extends Base_Controller {
 	    'sender' => Input::get('sender'),
 	    'receiver' => Input::get('receiver'),
 	    'created' => Input:get('created'),
-	    
-	    return Redirect::to_route('/messages');
+	    Message::create($data),
+	    return View::make('messages_sent');
 	}
-	else{
-	return Redirect::to_route('/messages')->with('error', '
-	}
-
-
-    }
 
     public function get_sent(){
 
@@ -49,11 +35,5 @@ class Messenger_Controller extends Base_Controller {
 
     }
 
-
-
-
-
-
 }    
 ?>
-

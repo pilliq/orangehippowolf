@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
-//one for messages?
+DROP TABLE IF EXISTS messages;
 
 CREATE TABLE user (
     username varchar(127) primary key, /* netid */
