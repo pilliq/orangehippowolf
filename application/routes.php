@@ -41,6 +41,10 @@ Route::group(array('before' => 'auth'), function() {
 	}
     }));
 
+
+    Route::get('/requests/1', function() {
+	return View::make('instructor/request');
+    });
     Route::get('/requests', array('as' => 'requests', 'uses' => 'instructor@requests'));
     Route::get('/courses', array('as' => 'courses', 'uses' => 'instructor@courses'));
     Route::get('/courses/create', array('as' => 'create_courses', 'uses' => 'instructor@create_course'));
