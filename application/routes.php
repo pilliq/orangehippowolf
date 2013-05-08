@@ -37,7 +37,9 @@ Route::group(array('before' => 'auth'), function() {
 	if (Session::get('instructor') == 1) {
 	    return Redirect::to_route('requests');
 	} else {
-	    return View::make('student.home');
+	    $user = Session::get('username');
+	    $data['requests'] = Requests::get_user($user); 
+	    return View::make('student.home', $data);
 	}
     }));
 
@@ -50,6 +52,7 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('/courses', array('as' => 'courses', 'uses' => 'instructor@courses'));
     Route::get('/courses/create', array('as' => 'create_courses', 'uses' => 'instructor@create_course'));
 
+    Route::post('/requests/create', array('uses' => 'student@create_request'));
     Route::post('/courses/create', array('uses' => 'instructor@create_course'));
 
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));

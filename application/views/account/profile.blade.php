@@ -15,6 +15,14 @@
 	    <div class="span12 text-center">
 		<h2>Profile</h2>
 		{{ Session::get('username') }}
+		<br />
+		@if (Session::get('instructor') == 1) 
+		    I am an instructor
+		@else 
+		    I am a student
+		@endif
+		<br />
+		{{ Session::get('instructor') }}
 	    </div>
 	</div>
     </div>

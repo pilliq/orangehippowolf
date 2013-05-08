@@ -9,6 +9,11 @@
 @endsection
 
 @section('content')
+    @if (Session::has('sucess'))
+	<div class="alert alert-success">
+	    {{ Session::get('success') }}
+	</div>
+    @endif
     <div class="page-header">
 	    <h1>
 		Requests
@@ -24,31 +29,25 @@
 	</tr>
     </thead>
     <tbody>
-	<tr>
-	    <td>01:198:111</td>
-	    <td><a href="#">Introduction to Computer Science</a></td>
-	    <td><span class="label label-warning">Pending</span></td>
-	</tr>
-	<tr>
-	    <td>01:198:112</td>
-	    <td><a href="#">Data Structures</a></td>
-	    <td><span class="label label-warning">Pending</span></td>
-	</tr>
-	<tr>
-	    <td>01:198:211</td>
-	    <td><a href="#">Computer Architecture</a></td>
-	    <td><span class="label label-success">Accepted</span></td>
-	</tr>
-	<tr>
-	    <td>01:198:214</td>
-	    <td><a href="#">Systems Programming</a></td>
-	    <td><span class="label label-important">Rejected</span></td>
-	</tr>
-	<tr>
-	    <td>01:198:205</td>
-	    <td><a href="#">Introduction to Discrete Structures I</a></td>
-	    <td><span class="label label-success">Accepted</span></td>
-	</tr>
+	@foreach ($requests as $request)
+	    <tr>
+	    <td>{{ $request->course }}</td>
+	    <td>{{ Course::get_name($request->course) }}</td>
+	    <td>
+		@if ($request->status == 'granted')
+		    <span class="label label-success">Granted</span>
+		@elseif ( $request->status == 'denied') 
+		    <span class="label label-important">Denied</span>
+		@elseif ( $request->status == 'inactive') 
+		    <span class="label">Inactive</span>
+		@elseif ( $request->status == 'pending') 
+		    <span class="label label-warning">Pending</span>
+		@elseif ( $request->status == 'expired') 
+		    <span class="label label-inverse">Expired</span>
+		@endif
+	    </td>
+	    </tr>
+	@endforeach
     </tbody>
     </table>
 @endsection

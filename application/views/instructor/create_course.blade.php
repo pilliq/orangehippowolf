@@ -9,6 +9,11 @@
 @endsection
 
 @section('content')
+    @if (Session::has('error'))
+	<div class="alert alert-error">
+	    {{ Session::get('error') }}
+	</div>
+    @endif
     <div class="page-header">
 	<h1>
 	    Add a Course
@@ -52,87 +57,6 @@
 		    </div>
 		    <div class="span6">
 			<div class="heading">
-			    <h2 class="form-heading">
-				Ranking
-				<small> Weight in order of importance with 1 being least important (leave blank for default)</small>
-			    </h2>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits Remaining</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" name="rankCreditsRemaining"/>
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Courses Remaining</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" name="rankMajor"/>
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Declared Major</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">GPA</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Prerequisite GPA</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Has other majors</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">failed twice 111, 112, or 152</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining"># of times failed prequisites</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining"> Apllied for Special Permission Number but did not use</label>
-			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
-			    </div>
-			</div>
-
-		    </div>
-		</div>
-		<div class="row-fluid">
-		    <div class="span6">
-			<div class="heading">
-			    <h2 class="form-heading">
-				Permission Numbers
-				<small>(Optional)</small>
-			    </h2>
-			</div>
-			@for ($i=0 ; $i < 10 ; $i++) 
-			    <div class="control-group">
-				<label class="control-label" for="inputNumbers">{{ $i+1 }}</label>
-				<div class="controls">
-				    <input type="text" class="span8" placeholder="" name="permission{{ $i }}"/>
-				</div>
-			    </div>
-			@endfor
-		    </div>
-		    <div class="span6">
-			<div class="heading">
 			    <h2 class="form-heading">Room Information</h2>
 			</div>
 			<div class="control-group">
@@ -158,6 +82,87 @@
 				<input type="text" class="span2" placeholder="" name="roomCapacity"/>
 			    </div>
 			</div>
+		    </div>
+		</div>
+		<div class="row-fluid">
+		    <div class="span6">
+			<div class="heading">
+			    <h2 class="form-heading">
+				Permission Numbers
+				<small>(Optional)</small>
+			    </h2>
+			</div>
+			@for ($i=0 ; $i < 10 ; $i++) 
+			    <div class="control-group">
+				<label class="control-label" for="inputNumbers">{{ $i+1 }}</label>
+				<div class="controls">
+				    <input type="text" class="span8" placeholder="" name="permission{{ $i }}"/>
+				</div>
+			    </div>
+			@endfor
+		    </div>
+		    <div class="span6">
+			<div class="heading">
+			    <h2 class="form-heading">
+				Ranking
+				<small> Weight in order of importance with 1 being least important (leave blank for default)</small>
+			    </h2>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">Credits Completed</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankcredits_completed"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">Major Credits Completed</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankmajor_credits_completed"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">Declared Major</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankdeclared_major"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">GPA</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankgpa"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">Prerequisite GPA</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankprereq_gpa"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">Has other majors</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankother_majors"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining">failed twice 111, 112, or 152</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankfailed_basic"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining"># of times failed prequisites</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankfailed_prereq"/>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining"> Applied for Special Permission Number but did not use</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" name="rankno_use_permission"/>
+			    </div>
+			</div>
+
 		    </div>
 		</div>
 		<div class="row-fluid">

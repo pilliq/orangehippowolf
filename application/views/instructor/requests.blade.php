@@ -26,7 +26,6 @@
 	        <div class="span10">
 	            <div class="">
 		        <div class="page-header"><h2>All Requests</h2></div>
-		        <h4>CS 112</h4>
                 <div class="tab-content">
                     <div class="tab-pane active"  id="tab1">
                         <p>
@@ -34,9 +33,8 @@
                             <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>RUID</th>
-                                <th>Timestamp</th>
-                                <th>Name</th>
+				<th>Course</th>
+                                <th>Netid</th>
                                 <th>Comments</th>
                                 <th>Special Permission Number</th>
                             </tr>
@@ -44,9 +42,9 @@
                             <tbody>
                             <tr> 
                                 <td>1</td>
-                                <td>128005294</td>
-                                <td>Joseph Calvano</td>
-                                <td>Attended First Day of Class</td>
+				<td>01:198:111</td>
+				<td>jscalvano</td>
+				<td>Already attended first day of class</td>
                                 <td>
                                     <div class="row-fluid">
                                         <div class="span5"> 
@@ -54,50 +52,7 @@
                                                     <option>3456</option>
                                                     <option>1242</option>
                                                 </select>
-                                                Or input:
-                                        </div>
-                                        <div class="span4">
-                                            <input class ="input-small" type="text" placeholder="Enter unlisted number" name="spnumber">
-                                        </div>
-                                        <div class="span2">
-                                            <button class="btn-primary" type=submit">Assign</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                        </p>
-                    </div>
-                </div>
-                <h4>CS 112</h4>
-                <div class="tab-content">
-                    <div class="tab-pane active"  id="tab1">
-                        <p>
-                            <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>RUID</th>
-                                <th>Name</th>
-                                <th>Comments</th>
-                                <th>Special Permission Number</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr> 
-                                <td>1</td>
-                                <td>128005294</td>
-                                <td>Joseph Calvano</td>
-                                <td>Attended First Day of Class</td>
-                                <td>
-                                    <div class="row-fluid">
-                                        <div class="span5"> 
-                                                <select class="input-small">
-                                                    <option>3456</option>
-                                                    <option>1242</option>
-                                                </select>
-                                                Or input:
+                                                Or:
                                         </div>
                                         <div class="span4">
                                             <input class ="input-small" type="text" placeholder="Enter unlisted number" name="spnumber">

@@ -4,7 +4,21 @@ class Instructor_Controller extends Base_Controller {
     
     public $restful = true;
 
+    private $default_ranks = array('credits_completed' => 1,
+				  'major_credits_completed' => 2,
+				  'declared_major' => 3,
+				  'gpa' => 4,
+				  'prereq_gpa' => 5,
+				  'other_majors' => 6,
+				  'failed_basic' => 7,
+				  'failed_prereq' => 8,
+				  'no_use_permission' => 9
+			         );
+
     public function get_requests() {
+	$user = Session::get('username');
+	$data['courses'] = Course::get_by_instructor($user);
+	//$data['requests'] = Requests::get_offering();
 	return View::make('instructor/requests');
     }
 
@@ -19,9 +33,6 @@ class Instructor_Controller extends Base_Controller {
     }
 
     public function post_create_course() {
-	var_dump(Input::all());
-	return;
-
 	/* course info */
 	$parts = explode(' ', Input::get('course'));
 	$cid = $parts[0];
@@ -44,29 +55,45 @@ class Instructor_Controller extends Base_Controller {
 	/* permission numbers */
 	for ($i = 0 ; $i < 10 ; $i++) {
 	    $perm_num = Input::get('permission'.strval($i), '');
-	    if(!$perm_num === '')  {
+	    if(!$perm_num == '')  {
 		Permission::create($perm_num,$cid,$section);
 	    }
 	}
 
 	/* room info */
 	$building = Input::get('roomBuilding');
+	$code = Building::exists_by_name($building);
 	if (!Building::exists_by_name($building)) {
 	    return Redirect::back()->with('error', 'Building does not exist');
 	}
 	$room_num = Input::get('roomNumber', '');
-	if ($room_num === '') {
+	if ($room_num == '') {
 	    return Redirect::back()->with('error', 'A room number is needed');
 	}
 	$capacity = Input::get('roomCapacity','');
-	if ($capacity === '') {
+	if ($capacity == '') {
 	    return Redirect::back()->with('error', 'A capacity is needed');
 	}
-	if (!Room::create($room_num,$building,$cacpacity)) {
+	if (!Room::create($room_num,$code,$capacity)) {
 	    return Redirect::back()->with('error', 'Could not create a room');
 	}
 	
 	/* ranking info */
+	$ranks = array();
+	foreach ($default_ranks as $attr => $default_rank) {
+	    $rank = Input::get("rank".$attr, '');
+	    if ($rank === '') {
+		$rank = $default_rank;
+	    }
+	    $ranks[$attr] = $rank;
+	}
+	if (!RankAlgorithm::create($ranks,$cid,$section)) {
+	    return Redirect::back()->with('error', 'Could not create a rank algorithm');
+	}
+	
+	var_dump(Input::all());
+	return;
+
 	/* prereqs */
     }
 

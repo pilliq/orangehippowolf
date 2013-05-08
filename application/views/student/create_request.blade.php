@@ -9,6 +9,11 @@
 @endsection
 
 @section('content')
+    @if (Session::has('error')) 
+	<div class="alert alert-error">
+	    {{ Session::get('error') }}
+	</div>
+    @endif
     <div class="page-header">
     <h1>Request Special Permission Number</h1>
     </div>
@@ -34,16 +39,16 @@
             <label class="control-label" for="inputCourse">Select a course</label>
             <div class="controls">
             <select class="span11" name="course">
-                @foreach  ($courses as $course)
-                <option>{{ $course->cid }}  {{ $course->title }} {{ $course->section }} {{ $course->year}}</option>
-                @endforeach
+		@foreach ($courses as $course)
+		    <option>{{ $course->cid }} --- {{ $course->section }} --- {{ Course::get_name($course->cid) }}</option>
+		@endforeach
             </select>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="inputComments">Comments</label>
             <div class="controls">
-                <textarea class ="xlarge" type = "span6" rows="4" id="comments" name="comments"></textarea>
+                <input class ="xlarge span6" name="comments" value="" />
             </div>
         </div>
       <!--  <div class="control-group">
@@ -60,7 +65,7 @@
         </div>
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" value="Create Request">
-            <a class="btn" href="{{ URL::to_route('create_requests') }}">Cancel</a>
+            <a class="btn" href="{{ URL::to_route('index') }}">Cancel</a>
 
     </div>
     {{ Form::close() }}

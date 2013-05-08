@@ -13,11 +13,11 @@ class Building {
     }
 
     public static function exists_by_name($name) {
-	$result = $this->get_by_name($name);
+	$result = Building::get_by_name($name);
 	if (count($result) == 0) {
 	    return false;
 	}
-	return true;
+	return $result[0]->code;
     }
 }
 

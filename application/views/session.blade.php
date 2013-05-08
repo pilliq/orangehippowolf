@@ -2,7 +2,6 @@
 
 @section('styles')
     @parent
-    {{ HTML::style('css/session.css') }}
 @endsection
 
 @section('top-nav')

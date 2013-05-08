@@ -115,9 +115,12 @@ CREATE TABLE request (
     rid int(11) unsigned NOT NULL AUTO_INCREMENT primary key,
     student varchar(127),
     course varchar(127),
+    section varchar(127),
     comment text,
     status varchar(127),
+    sp varchar(127),
     created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (student) REFERENCES user(username),
-    FOREIGN KEY (course) REFERENCES course(cid)
+    FOREIGN KEY (course,section) REFERENCES course_offering(cid,section)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
