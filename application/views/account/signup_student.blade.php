@@ -110,7 +110,14 @@
 			    <label class="control-label" for="inputMajorCredits">Major Credits Completed</label>
 			    <div class="controls">
 				<input type="text" placeholder="e.g. 28" class="span3" name="major_credits" />
+			    </div>	
+			</div>
+	    		<div class="control-group">
+			    <label class="control-label" for="inputMajor">Major</label>
+			    <div class="controls">
+				<input type="text" placeholder="e.g. Computer Science" name="major" />
 			    </div>
+			</div>	
 			</div>
 		    </div>
 		</div>

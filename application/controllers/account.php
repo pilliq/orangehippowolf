@@ -87,7 +87,8 @@ class Account_Controller extends Base_Controller {
 	    'gradyear' => Input::get('gradyear', 2013),
 	    'gpa' => Input::get('gpa', 0.000),
 	    'credits' => Input::get('credits', 0),
-	    'major_credits' => Input::get('major_credits', 0)
+	    'major_credits' => Input::get('major_credits', 0),
+	    'major' => Input::get('major', 'CS')
 	);
 
 	$result = Student::create($data);

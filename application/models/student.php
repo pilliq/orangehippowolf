@@ -13,9 +13,9 @@ class Student extends User {
 	$major_credits = $data['major_credits'];
 	$credits = $data['credits'];
 	$gpa = $data['gpa'];
+	$major = $data['major'];
 
-	$query = "INSERT INTO student(ruid,netid,gradMonth,gradYear,majorCredits,credits,gpa) values($ruid,'$username','$gradmonth','$gradyear',$major_credits,$credits,$gpa);";
-	Log::write('debug', $query);
+	$query = "INSERT INTO student(ruid,netid,gradMonth,gradYear,majorCredits,credits,gpa,major) values($ruid,'$username','$gradmonth','$gradyear',$major_credits,$credits,$gpa,'$major');";
 	return DB::query($query);
     }
 }
