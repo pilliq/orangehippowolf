@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS rank_algorithm;
 DROP TABLE IF EXISTS instructor;
 DROP TABLE IF EXISTS permission;
 DROP TABLE IF EXISTS messages;
@@ -26,6 +27,7 @@ CREATE TABLE student (
     gradYear varchar(127),
     majorCredits int(11),
     credits int(11),
+    major varchar(127),
     gpa decimal(10,3)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -67,6 +69,21 @@ CREATE TABLE course_offering (
     primary key (cid,section)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE rank_algorithm (
+    cid varchar(127),
+    section varchar(127),
+    credits_completed int(11),
+    major_credits_completed int(11),
+    declared_major int(11),
+    gpa int(11),
+    prereq_gpa int(11),
+    other_majors int(11),
+    failed_basic int(11),
+    failed_prereq int(11),
+    no_use_permission int(11),
+    FOREIGN KEY (cid,section) REFERENCES course_offering(cid,section)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE building (
     code varchar(127) primary key,
     name varchar(127),
@@ -74,10 +91,11 @@ CREATE TABLE building (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE room (
-    rid int(11) unsigned NOT NULL AUTO_INCREMENT, /* this is needed because many instructors may use the same room and have different capacity requirements for it */
+    rid int(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY, /* this is needed because many instructors may use the same room and have different capacity requirements for it */
     number varchar(127),
-    building varchar(127) references building,
+    building varchar(127),
     capacity int(11),
+    foreign key (building) references building(code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* 
