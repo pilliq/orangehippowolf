@@ -1,10 +1,11 @@
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
+DROP TABLE IF EXISTS permission;
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS building;
-DROP TABLE IF EXISTS course_offering;
 DROP TABLE IF EXISTS request;
+DROP TABLE IF EXISTS course_offering;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS user;
 
@@ -60,6 +61,8 @@ CREATE TABLE course_offering (
     term varchar(127),
     section varchar(127),
     instructor varchar(127),
+    created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    foreign key (instructor) references user(username),
     foreign key (cid) references course(cid),
     primary key (cid,section)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -71,15 +74,24 @@ CREATE TABLE building (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE room (
+    rid int(11) unsigned NOT NULL AUTO_INCREMENT, /* this is needed because many instructors may use the same room and have different capacity requirements for it */
     number varchar(127),
     building varchar(127) references building,
-    capacity int(11)
+    capacity int(11),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* 
 CREATE TABLE registration (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 */
+
+CREATE TABLE permission ( 
+    number varchar(127),
+    cid varchar(127),
+    section varchar(127),
+    created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cid,section) REFERENCES course_offering(cid,section)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE request (
     rid int(11) unsigned NOT NULL AUTO_INCREMENT primary key,
