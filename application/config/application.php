@@ -13,7 +13,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://cs336-52.rutgers.edu/public',
+	'url' => 'http://localhost/perms/public',
+    
 
 	/*
 	|--------------------------------------------------------------------------
