@@ -17,6 +17,11 @@ class Course {
 	return DB::query($query);
     }
 
+    public static function get_all_offerings() {
+        $query = "SELECT * FROM course_offering ORDER BY cid;"; 
+        return DB::query($query);
+    }
+
     /* 
      * Returns true if given course with given section exists else returns false
      */
