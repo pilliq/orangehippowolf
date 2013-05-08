@@ -16,7 +16,7 @@
     </div>
     <div class="create-couse-form">
 	<div class="area">
-	    <form class="form-horizontal">
+	    {{ Form::open('courses/create', 'POST', array('class' => 'form-horizontal')) }} 
 		<div class="row-fluid">
 		    <div class="span6">
 			<div class="heading">
@@ -25,7 +25,7 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputCourse">Select a course</label>
 			    <div class="controls">
-				<select class="span11">
+				<select class="span11" name="course">
 				    @foreach ($courses as $course) 
 					<option>{{ $course->cid }}  {{ $course->title }}</option>
 				    @endforeach
@@ -35,7 +35,7 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputYear">Select a year</label>
 			    <div class="controls">
-				<select class="span3">
+				<select class="span3" name="courseYear">
 				    <option>2013</option>
 				    <option>2014</option>
 				    <option>2015</option>
@@ -46,7 +46,7 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputSection">Section</label>
 			    <div class="controls">
-				<input type="text" class="span2" placeholder="e.g. 02" />
+				<input type="text" class="span2" placeholder="e.g. 02"  name="courseSection"/>
 			    </div>
 			</div>
 		    </div>
@@ -57,14 +57,14 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
+				<input type="text" class="span8" placeholder="" name="rankCreditsRemaining"/>
 				<span class="help-inline">Number of total credits out of 120</span>
 			    </div>
 			</div>
 			<div class="control-group">
 			    <label class="control-label" for="inputCreditsRemaining">Declared major</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
+				<input type="text" class="span8" placeholder="" name="rankMajor"/>
 				<span class="help-inline">The weight of </span>
 			    </div>
 			</div>
@@ -124,7 +124,7 @@
 			    <div class="control-group">
 				<label class="control-label" for="inputNumbers">{{ $i+1 }}</label>
 				<div class="controls">
-				    <input type="text" class="span8" placeholder="" />
+				    <input type="text" class="span8" placeholder="" name="permission{{ $i }}"/>
 				</div>
 			    </div>
 			@endfor
@@ -136,7 +136,7 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputBuilding">Building</label>
 			    <div class="controls">
-				<select class="span11">
+				<select class="span11" name="roomBuilding">
 				    <option></option>
 				    @foreach ($buildings as $building) 
 					<option>{{ $building->name }}</option>
@@ -147,13 +147,13 @@
 			<div class="control-group">
 			    <label class="control-label" for="inputRoom">Room Number</label>
 			    <div class="controls">
-				<input type="text" class="span3" placeholder="" />
+				<input type="text" class="span3" placeholder="" name="roomNumber"/>
 			    </div>
 			</div>
 			<div class="control-group">
 			    <label class="control-label" for="inputCapacity">Capacity</label>
 			    <div class="controls">
-				<input type="text" class="span2" placeholder="" />
+				<input type="text" class="span2" placeholder="" name="roomCapacity"/>
 			    </div>
 			</div>
 		    </div>
@@ -161,13 +161,15 @@
 		<div class="row-fluid">
 		    <div class="span6">
 			<div class="heading">
-			    <h2 class="form-heading">Pre-requisites</div>	
+			    <h2 class="form-heading">
+				Pre-requisites
+				<small>Select one or more Pre-reqs
+			    </h2>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputPrereq">Select one or more pre-requisites</label>
+			    <!--<label class="control-label" for="inputPrereq">Select all Prereqs</label> --!>
 			    <div class="controls">
-				<select multiple="multiple" class="span8">
-				    <option>hello world</option>
+				<select multiple="multiple" class="span12" name="prereq">
 				    @foreach ($courses as $course) 
 					<option>{{ $course->cid }}  {{ $course->title }}</option>
 				    @endforeach
