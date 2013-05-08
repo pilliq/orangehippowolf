@@ -52,7 +52,10 @@
 		    </div>
 		    <div class="span6">
 			<div class="heading">
-			    <h2 class="form-heading">Ranking</h2>
+			    <h2 class="form-heading">
+				Ranking
+				<small> Weight in order of importance with 1 being least important</small>
+			    </h2>
 			</div>
 			<div class="control-group">
 			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
