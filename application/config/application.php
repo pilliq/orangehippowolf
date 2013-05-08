@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/~pquiza/perms/public',
+	'url' => 'http://localhost/perms/public',
 
 	/*
 	|--------------------------------------------------------------------------
