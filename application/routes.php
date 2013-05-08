@@ -45,6 +45,8 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('/courses', array('as' => 'courses', 'uses' => 'instructor@courses'));
     Route::get('/courses/create', array('as' => 'create_courses', 'uses' => 'instructor@create_course'));
 
+    Route::post('/courses/create', array('uses' => 'instructor@create_course'));
+
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
     Route::get('/messages', array('as' => 'messages', 'uses' => 'messages@messages'));
     Route::get('/messages/compose', array('as' => 'messages_compose', 'uses' => 'messages@compose'));
