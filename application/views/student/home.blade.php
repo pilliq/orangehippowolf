@@ -14,7 +14,7 @@
 		Requests
 	    </h1>
     </div>
-    <button class="btn btn-primary">Create a new request</button>
+    <a href="{{ URL::to_route('create_requests') }}" class="btn btn-primary">Create a new request</a>
     <table class="table table-hover">
     <thead>
 	<tr>
