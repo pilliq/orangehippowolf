@@ -35,25 +35,25 @@
 Route::group(array('before' => 'auth'), function() {
     Route::get('/', array('as' => 'index', 'do' => function() {
 	if (Session::get('instructor') == 1) {
-	    return Redirect::to_route('requests');
+	    return View::make('instructor/home');
 	} else {
 	    return View::make('student/home');
 	}
     }));
 
-    Route::get('/requests', array('as' => 'requests', 'uses' => 'instructor@requests'));
-    Route::get('/courses', array('as' => 'courses', 'uses' => 'instructor@courses'));
-    Route::get('/courses/create', array('as' => 'create_courses', 'uses' => 'instructor@create_course'));
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
-    Route::get('/messages', array('as' => 'messages', 'uses' => 'messenger@messages'));
-    Route::get('messages/compose', array('as' => 'messages_compose', 'uses' => 'messenger@messages_compose'));
-    Route::get('messages/sent', array('as' => 'messages_sent', 'uses' => 'messenger@messages_sent'));
-    Route::get('messages/received', array('as' => 'messages_received', 'uses' => 'messenger@messages_received'));
+    Route::get('/messages', array('as' => 'messages', 'uses' => 'messages@messages'));
+    Route::get('/messages/compose', array('as' => 'messages_compose', 'uses' => 'messages@compose'));
+    Route::get('/messages/sent', array('as' => 'messages_sent', 'uses' => 'messages@sent'));
+    Route::get('/messages/received', array('as' => 'messages_received', 'uses' => 'messages@received'));
     
-
+    Route::post('/messages/compose', array('uses' => 'messages@compose'));
 
 });
 
+Route::get('tmp', function() {
+    return View::make('tmp');
+});
 Route::get('signup', array('as' => 'signup', 'uses' => 'account@signup'));
 Route::get('signup/instructor', array('as' => 'signup_instructor', 'uses' => 'account@signup_instructor'));
 Route::get('signup/student', array('as' => 'signup_student', 'uses' => 'account@signup_student'));
