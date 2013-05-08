@@ -16,6 +16,7 @@
             <p>RUID: 128005294</p>
             <p>Graduation: May 2013</p>
             <p>Major(s):Molecular Biology and Biochemistry; Mathematics; Computer Science</p>
+            <p>Timestamp: 09/12/13 07:38:52</p>
         </div>
         <div class="span3">
             <p>RequestID: 23567</p>

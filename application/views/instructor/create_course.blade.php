@@ -54,65 +54,64 @@
 			<div class="heading">
 			    <h2 class="form-heading">
 				Ranking
-				<small> Weight in order of importance with 1 being least important</small>
+				<small> Weight in order of importance with 1 being least important (leave blank for default)</small>
 			    </h2>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">Credits Remaining</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" name="rankCreditsRemaining"/>
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" name="rankCreditsRemaining"/>
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Declared major</label>
+			    <label class="control-label" for="inputCreditsRemaining">Courses Remaining</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" name="rankMajor"/>
-				<span class="help-inline">The weight of </span>
+				<input type="text" class="span2" placeholder="" name="rankMajor"/>
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">Declared Major</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">GPA</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">Prerequisite GPA</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">Has other majors</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining">failed twice 111, 112, or 152</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
 			<div class="control-group">
-			    <label class="control-label" for="inputCreditsRemaining">Credits remaining</label>
+			    <label class="control-label" for="inputCreditsRemaining"># of times failed prequisites</label>
 			    <div class="controls">
-				<input type="text" class="span8" placeholder="" />
-				<span class="help-inline">Number of total credits out of 120</span>
+				<input type="text" class="span2" placeholder="" />
 			    </div>
 			</div>
+			<div class="control-group">
+			    <label class="control-label" for="inputCreditsRemaining"> Apllied for Special Permission Number but did not use</label>
+			    <div class="controls">
+				<input type="text" class="span2" placeholder="" />
+			    </div>
+			</div>
+
 		    </div>
 		</div>
 		<div class="row-fluid">
