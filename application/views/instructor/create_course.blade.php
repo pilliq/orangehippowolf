@@ -16,7 +16,7 @@
     </div>
     <div class="create-couse-form">
 	<div class="area">
-	    {{ Form::open('courses/create', 'POST', array('class' => 'form-horizontal')) }} 
+	    {{ Form::open('courses/create', 'POST', array('id' => 'create_course', 'class' => 'form-horizontal')) }} 
 		<div class="row-fluid">
 		    <div class="span6">
 			<div class="heading">
@@ -165,17 +165,17 @@
 			<div class="heading">
 			    <h2 class="form-heading">
 				Pre-requisites
-				<small>Select one or more Pre-reqs
+				<small>Select one or more Pre-reqs</small>
 			    </h2>
 			</div>
 			<div class="control-group">
 			    <!--<label class="control-label" for="inputPrereq">Select all Prereqs</label> --!>
-			    <div class="controls">
-				<select multiple="multiple" class="span12" name="prereq">
-				    @foreach ($courses as $course) 
-					<option>{{ $course->cid }}  {{ $course->title }}</option>
-				    @endforeach
-				</select>
+                <div class="controls">
+				    <select class="multiselect" multiple="multiple" class="span12" name="prereq">
+				        @foreach ($courses as $course) 
+                        <option class="prereq" value="{{$course->cid}}" > "{{ $course->cid }}  {{ $course->title }}"</option>
+				        @endforeach
+                    </select>
 			    </div>
 			</div>
 		    </div>
@@ -188,4 +188,58 @@
 	    </form>
 	</div>
     </div>
+@endsection
+@section('scripts')
+    @parent
+    {{ HTML::script('js/bootstrap-multiselect.js') }}
+    <script type="text/javascript">
+//    function addData() {
+//        $('form#create_course').submit(function(){ 
+//            $('option.prereq').each(function(i,element) {
+//                if (this.selected) {
+//                    $('<input />').attr('type', 'hidden')
+//                        .attr('name', "prereq" + $(element).attr('value'))
+//                        .attr('value', '1')
+//                        .appendTo('form#create_course');
+//                }
+//            });  
+//            return true;
+//        });
+//        //$('form#create_course').off('submit');
+//        $('form#create_course').submit();
+//    }
+//
+  $(document).ready(function() {
+//      $('form#create_course').on('submit', function(e) {
+//            e.preventDefault();
+//            addData();
+//            //var data = addData($('form#create_course').serialize());
+//            //$.post("{{ URL::current() }}", data, function(d) {
+//            //    console.log(d);
+//            //    window.location = "{{ URL::current() }}";
+//            //});
+//     });
+   $('.multiselect').multiselect({
+     buttonClass: 'btn',
+     buttonWidth: 'auto',
+     buttonContainer: '<div class="btn-group" />',
+     maxHeight: 200,
+     buttonText: function(options) {
+       if (options.length == 0) {
+         return 'None selected <b class="caret"></b>';
+       }
+       else if (options.length > 3) {
+         return options.length + ' selected  <b class="caret"></b>';
+       }
+       else {
+         var selected = '';
+         options.each(function() {
+           selected += $(this).text() + ', ';
+         });
+         return selected.substr(0, selected.length -2) + ' <b class="caret"></b>';
+       }
+     }
+   });
+ });
+</script>
 @endsection
