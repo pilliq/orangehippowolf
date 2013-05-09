@@ -4,17 +4,6 @@ class Instructor_Controller extends Base_Controller {
     
     public $restful = true;
 
-    private $default_ranks = array('credits_completed' => 1,
-				  'major_credits_completed' => 2,
-				  'declared_major' => 3,
-				  'gpa' => 4,
-				  'prereq_gpa' => 5,
-				  'other_majors' => 6,
-				  'failed_basic' => 7,
-				  'failed_prereq' => 8,
-				  'no_use_permission' => 9
-			         );
-
     public function get_requests() {
 	$user = Session::get('username');
 	$data['courses'] = Course::get_by_instructor($user);
@@ -80,6 +69,17 @@ class Instructor_Controller extends Base_Controller {
 	
 	/* ranking info */
 	$ranks = array();
+	$default_ranks = array('credits_completed' => 1,
+			       'major_credits_completed' => 2,
+			       'declared_major' => 3,
+			       'gpa' => 4,
+			       'prereq_gpa' => 5,
+			       'other_majors' => 6,
+			       'failed_basic' => 7,
+			       'failed_prereq' => 8,
+			       'no_use_permission' => 9
+			       );
+
 	foreach ($default_ranks as $attr => $default_rank) {
 	    $rank = Input::get("rank".$attr, '');
 	    if ($rank === '') {

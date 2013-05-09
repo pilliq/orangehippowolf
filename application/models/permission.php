@@ -6,7 +6,6 @@ class Permission {
 	$query = "INSERT INTO permission(number,cid,section) values('$number','$cid','$section');";
 	return DB::query($query);
     }
-
 }
 
 ?>
