@@ -9,11 +9,6 @@
 @endsection
 
 @section('content')
-    @if (Session::has('error'))
-	<div class="alert alert-error">
-	    {{ Session::get('error') }}
-	</div>
-    @endif
     <div class="page-header">
 	<h1>
 	    Add a Course

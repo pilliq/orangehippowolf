@@ -11,11 +11,6 @@
 
 
 @section('content')
-    @if (Session::has('error'))
-	<div class="alert alert-error">
-	    {{ Session::get('error') }}
-	</div>
-    @endif
     <div class="login-form">
 	<div class="row-fluid">
 	    <div class="span12 text-center">

@@ -5,11 +5,6 @@
 @endsection
 
 @section('content')
-    @if(Session::has('error'))
-	<div class="alert alert-error">
-	    {{ Session::get('error') }}
-	</div>
-    @endif
     <div class="page-header">
 	<h1>Create a Student Account</h1>
     </div>
@@ -114,8 +109,9 @@
 			</div>
 	    		<div class="control-group">
 			    <label class="control-label" for="inputMajor">Major</label>
-			    <div class="controls">
-				<input type="text" placeholder="e.g. Computer Science" name="major" />
+			    <div class="controls majors">
+				<input type="text" placeholder="e.g. Computer Science" name="major0" />
+				<a href="#" class="btn btn-link" id="addMajor">Add another major</a>
 			    </div>
 			</div>	
 			</div>
@@ -128,4 +124,23 @@
 	    {{ Form::close() }}
 	</div>
     </div>
+@endsection
+@section('scripts')
+    @parent
+    <script type="text/javascript">
+	$(document).ready(function() {
+	    var i = 1;
+	    $(document).on('click', '#addMajor', function() {
+		$('<div><input type="text" placeholder="" name="major'+i+'" /> <a href="#" class="btn btn-link" id="remMajor">Remove</a></div>')
+		.appendTo('div.majors');
+		i++;
+	    });		
+	    $(document).on('click', '#remMajor', function() {
+		if (i > 1) {
+		    $(this).parent().remove();
+		    i--;
+		} 
+	    });
+	});
+    </script>
 @endsection
