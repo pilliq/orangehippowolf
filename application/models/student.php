@@ -13,9 +13,13 @@ class Student extends User {
 	$major_credits = $data['major_credits'];
 	$credits = $data['credits'];
 	$gpa = $data['gpa'];
-	$major = $data['major'];
 
-	$query = "INSERT INTO student(ruid,netid,gradMonth,gradYear,majorCredits,credits,gpa,major) values($ruid,'$username','$gradmonth','$gradyear',$major_credits,$credits,$gpa,'$major');";
+	$query = "INSERT INTO student(ruid,netid,gradMonth,gradYear,majorCredits,credits,gpa) values($ruid,'$username','$gradmonth','$gradyear',$major_credits,$credits,$gpa);";
+	return DB::query($query);
+    }
+
+    public static function get_student($username) {
+	$query = "SELECT * FROM student where netid='$username';";
 	return DB::query($query);
     }
 }

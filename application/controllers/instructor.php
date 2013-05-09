@@ -4,7 +4,7 @@ class Instructor_Controller extends Base_Controller {
     
     public $restful = true;
 
-    public function get_requests() {
+    public function get_all_requests() {
 	$user = Session::get('username');
 	$data['courses'] = Course::get_by_instructor($user);
 	//$data['requests'] = Requests::get_offering();

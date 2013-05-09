@@ -87,13 +87,22 @@ class Account_Controller extends Base_Controller {
 	    'gradyear' => Input::get('gradyear', 2013),
 	    'gpa' => Input::get('gpa', 0.000),
 	    'credits' => Input::get('credits', 0),
-	    'major_credits' => Input::get('major_credits', 0),
-	    'major' => Input::get('major', 'CS')
+	    'major_credits' => Input::get('major_credits', 0)
 	);
 
-	$result = Student::create($data);
+	if (!Student::create($data)) {
+	    return Redirect::back()->with('error', 'Could not create a student account');    
+	}
 
-	return Redirect::to_route('login');
+	$i = 0; 
+	while ($major=Input::get('major'.strval($i),false)) {
+	    if (!Major::create($data['username'], $major)) {
+		return Redirect::back()->with('error', "Could not add major $major");    
+	    }
+	    $i++;
+	}
+
+	return Redirect::to_route('login')->with('success', 'Successfully created account!');
     }
 
 }
