@@ -12,7 +12,9 @@ class Instructor_Controller extends Base_Controller {
     }
 
     public function get_courses() {
-	return View::make('instructor/courses');
+	$user = Session::get('username');
+	$data['offerings'] = Course::get_by_instructor($user);
+	return View::make('instructor/courses', $data);
     }
     
     public function get_create_course() {
@@ -91,10 +93,15 @@ class Instructor_Controller extends Base_Controller {
 	    return Redirect::back()->with('error', 'Could not create a rank algorithm');
 	}
 	
-	var_dump(Input::all());
-	return;
-
 	/* prereqs */
+	$prereqs = Input::get('prereq');
+	foreach($prereqs as $prereq) {
+	    if (!Prereq::create($prereq, $cid)) {
+		return Redirect::back()->with('error', "Could not add prereq $prereq");
+	    }
+	}
+
+	return Redirect::to_route('courses')->with('success', 'Successfully added a course!');
     }
 
 }

@@ -176,7 +176,7 @@
 			<div class="control-group">
 			    <!--<label class="control-label" for="inputPrereq">Select all Prereqs</label> --!>
                 <div class="controls">
-				    <select class="multiselect" multiple="multiple" class="span12" name="prereq">
+				    <select class="multiselect" multiple="multiple" class="span12" name="prereq[]">
 				        @foreach ($courses as $course) 
                         <option class="prereq" value="{{$course->cid}}" > "{{ $course->cid }}  {{ $course->title }}"</option>
 				        @endforeach
@@ -198,32 +198,7 @@
     @parent
     {{ HTML::script('js/bootstrap-multiselect.js') }}
     <script type="text/javascript">
-//    function addData() {
-//        $('form#create_course').submit(function(){ 
-//            $('option.prereq').each(function(i,element) {
-//                if (this.selected) {
-//                    $('<input />').attr('type', 'hidden')
-//                        .attr('name', "prereq" + $(element).attr('value'))
-//                        .attr('value', '1')
-//                        .appendTo('form#create_course');
-//                }
-//            });  
-//            return true;
-//        });
-//        //$('form#create_course').off('submit');
-//        $('form#create_course').submit();
-//    }
-//
   $(document).ready(function() {
-//      $('form#create_course').on('submit', function(e) {
-//            e.preventDefault();
-//            addData();
-//            //var data = addData($('form#create_course').serialize());
-//            //$.post("{{ URL::current() }}", data, function(d) {
-//            //    console.log(d);
-//            //    window.location = "{{ URL::current() }}";
-//            //});
-//     });
    $('.multiselect').multiselect({
      buttonClass: 'btn',
      buttonWidth: 'auto',

@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS building;
 DROP TABLE IF EXISTS request;
+DROP TABLE IF EXISTS prereq;
 DROP TABLE IF EXISTS course_offering;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS user;
@@ -55,6 +56,14 @@ CREATE TABLE course (
     course_number varchar(127),
     title varchar(127),
     credits int(11)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE prereq (
+    pid int(11) not null auto_increment primary key,
+    course_id varchar(127),
+    prereq_id varchar(127),
+    FOREIGN KEY (course_id) REFERENCES course(cid),
+    FOREIGN KEY (prereq_id) REFERENCES course(cid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE course_offering (
@@ -117,7 +126,7 @@ CREATE TABLE request (
     course varchar(127),
     section varchar(127),
     comment text,
-    status varchar(127),
+    status varchar(127) default 'pending',
     sp varchar(127),
     created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (student) REFERENCES user(username),
