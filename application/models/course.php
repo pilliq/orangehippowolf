@@ -15,6 +15,14 @@ class Course {
 	return $result[0]->title;
     }
 
+    public static function get_credits($id) {
+	$result = Course::get($id);
+	if (count($result) == 0) {
+	    return false;
+	}
+	return $result[0]->credits;
+    }
+
     public static function get($id) {
 	$query = "SELECT * FROM course WHERE cid='$id'";
 	return DB::query($query);
