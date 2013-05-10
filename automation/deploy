@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ "$1" == "fresh" ]]
+then
+    mysql -h 127.0.0.1 -u pquiza -p cs336 < ~/perms/application/models/schema.sql
+    bash ~/insert
+fi
+
+if [[ "$1" == "clean" ]]
+then
+    mysql -h 127.0.0.1 -u pquiza -p cs336 < ~/perms/application/models/schema.sql
+fi
+
+rm -rf /var/www/html/*
+cp -r ~/perms/* /var/www/html/
+sudo chmod -R a+w /var/www/html/storage/logs
+sudo chmod -R a+w /var/www/html/storage/views
+sudo cp ~/database.php /var/www/html/application/config
