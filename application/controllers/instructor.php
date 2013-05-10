@@ -4,11 +4,15 @@ class Instructor_Controller extends Base_Controller {
     
     public $restful = true;
 
-    public function get_all_requests() {
+    public function get_course_requests() {
 	$user = Session::get('username');
 	$data['courses'] = Course::get_by_instructor($user);
-	//$data['requests'] = Requests::get_offering();
-	return View::make('instructor/requests');
+	$data['requests'] = array();
+	foreach ($data['courses'] as $course) {
+	    $requests = Requests::get_offering($course->cid, $course->section);
+	    $data['requests'][$course->cid][$course->section] = $requests;
+	}
+	return View::make('instructor/requests_course', $data);
     }
 
     public function get_courses() {
@@ -23,6 +27,48 @@ class Instructor_Controller extends Base_Controller {
 	return View::make('instructor/create_course', $data);
     }
 
+    public function post_requests_action() {
+	$student = Input::get('student');
+	$course = Input::get('course');
+	$section = Input::get('section');
+	if (Input::get('action') == 'assign') {
+	    $sp = Input::get('unlisted', '');
+	    if ($sp == '') { // instructor selected from the list. Now we have to verify
+		$sp = Input::get('sp', '');
+		if (!Permission::exists($sp, $course, $section)) {
+		    return Redirect::back()->with('error', "You must select a permission number from the list or enter one");
+		}
+		if (!Permission::assign($sp, $course, $section, $student)) {
+		    return Redirect::back()->with('error', "Could not assign permission number $sp to $student");
+		}	    
+		if (!Requests::grant($student, $course, $section, $sp)) {
+		    return Redirect::back()->with('error', "Could not grant permission to $student"); 
+		}
+	    } else { // create a new permission number for course/section and assign it
+		if (!Permission::create($sp, $course, $section)) {
+		    return Redirect::back()->with('error', "Could not create a permission number");
+		}
+		if (!Permission::assign($sp, $course, $section, $student)) {
+		    return Redirect::back()->with('error', "Could not assign permission number to $student"); 
+		}
+		if (!Requests::grant($student, $course, $section, $sp)) {
+		    return Redirect::back()->with('error', "Could not grant permission to $student"); 
+		}
+	    }
+	    return Redirect::back()->with('success', "Assigned permission number $sp to $student");
+
+	} else if (Input::get('action') == 'deny') {
+	    if (!Requests::deny($student, $course, $section)) {
+		return Redirect::back()->with('error', 'Could not deny request');
+	    }
+	    if (!Permission::unassign($student, $course, $section)) {
+		return Redirect::back()->with('error', 'Could not unassign permission');
+	    }
+	    return Redirect::back()->with('success', 'Successfully denied request');
+	}
+	return Redirect::back()->with('error', 'Unknown action');
+    }
+
     public function post_create_course() {
 	/* course info */
 	$parts = explode(' ', Input::get('course'));
@@ -32,7 +78,7 @@ class Instructor_Controller extends Base_Controller {
 	}
 	$section = Input::get('courseSection', '');
 	if ($section == '') {
-	    return Redirect::back()->with('error', 'Must provide a section for the course');
+	    return Redirect::back()->with('error', 'You must provide a section for the course');
 	}
 	if (Course::offering_exists($cid,$section)) {
 	    return Redirect::back()->with('error', 'A course with that section already exists');

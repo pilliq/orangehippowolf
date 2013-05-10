@@ -129,7 +129,9 @@ CREATE TABLE permission (
     number varchar(127),
     cid varchar(127),
     section varchar(127),
+    assigned varchar(127),
     created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (assigned) REFERENCES user(username),
     FOREIGN KEY (cid,section) REFERENCES course_offering(cid,section)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

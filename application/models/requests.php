@@ -12,13 +12,13 @@ class Requests {
 	return DB::query($query);
     }
 
-    public static function grant($student, $course, $section, $sp, $reason) {
+    public static function grant($student, $course, $section, $sp, $reason='') {
 	$query = "UPDATE request SET status='granted', sp='$sp', reason='$reason' where student='$student' AND course='$course' AND section='$section';";
 	return DB::query($query);
     }
 
-    public static function deny($student, $course, $section) {
-	$query = "UPDATE request SET status='denied' where student='$student' AND course='$course' AND section='$section';";
+    public static function deny($student, $course, $section, $reason='') {
+	$query = "UPDATE request SET status='denied', reason='$reason', sp='' where student='$student' AND course='$course' AND section='$section';";
 	return DB::query($query);
     }
 
@@ -33,7 +33,7 @@ class Requests {
     }
 
     public static function get_offering($cid,$section) {
-	$query = "SELECT * FROM request where section='$section' course='$cid';";
+	$query = "SELECT * FROM request where section='$section' AND course='$cid';";
 	return DB::query($query);
     }
 

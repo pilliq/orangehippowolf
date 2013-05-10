@@ -18,7 +18,7 @@
     @if (count($requests) == 0)
 	<h2>You don't have any requests!</h2>
     @else
-	<table class="table table-hover">
+	<table class="table table-hover table-bordered">
 	<thead>
 	    <tr>
 		<th>Date Requested</th>
@@ -26,6 +26,7 @@
 		<th>Section</th>
 		<th>Course</th>
 		<th>Status</th>
+		<th>Permission Number</th>
 	    </tr>
 	</thead>
 	<tbody>
@@ -48,6 +49,7 @@
 			<span class="label label-inverse">Expired</span>
 		    @endif
 		</td>
+		<td>{{ $request->sp }}</td>
 		</tr>
 	    @endforeach
 	</tbody>
