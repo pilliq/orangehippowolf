@@ -37,6 +37,11 @@ Things that are changed in this version of the project:
     - Added ability to view all the requests an instructor receives by course 
       (this took a long time)
 
+    - Instructor can assign special permission numbers on the fly in the
+      requests view. This will create new special permission numbers in the db,
+      thereby allowing an unlimited number of special permission numbers per
+      course offering.
+
     - Added ability to grant permission if previously denied, and to deny 
       permission if previously granted
 
@@ -46,7 +51,7 @@ Things that are changed in this version of the project:
       and you'll see what we mean)
 
     - Added ability to view all send messages
-
+    
 Caveats:
     - Routing is still a bit messed up for the homepage for instructor
 	- once you login as instructor, add "/requests" to the URL to get to 
