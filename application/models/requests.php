@@ -32,6 +32,16 @@ class Requests {
 	return DB::query($query);
     }
 
+    public static function get_by_status($course, $section, $status=null) {
+	$query = '';
+	if ($status == null) {
+	    $query = "SELECT * FROM request where course='$course' AND section='$section';";
+	} else {
+	    $query = "SELECT * FROM request where course='$course' AND section='$section' AND status='$status';";
+	}
+	return DB::query($query);
+    }
+
     public static function get_offering($cid,$section) {
 	$query = "SELECT * FROM request where section='$section' AND course='$cid';";
 	return DB::query($query);

@@ -42,12 +42,11 @@ CREATE TABLE instructor (
 CREATE TABLE messages (
     mid int(11) not null auto_increment primary key,
     sender varchar(127) NOT NULL,
-    receiver varchar(127) NOT NULL,
+    receivers text NOT NULL,
     subject varchar(63),
     body text,
     created timestamp not null default CURRENT_TIMESTAMP,
-    FOREIGN KEY (sender) REFERENCES user (username),
-    FOREIGN KEY (receiver) REFERENCES user (username)
+    FOREIGN KEY (sender) REFERENCES user (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE course (

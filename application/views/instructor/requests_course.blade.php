@@ -35,7 +35,20 @@
 			<div class="control-group">
 			<h3>{{ $course }} {{ Course::get_name($course) }}</h3>
 			@foreach ($sections as $section => $section_requests)
-			    <h4>Section {{ $section }}</h4>
+			    {{ Form::open('/messages/compose', 'POST', array('class' => 'form-inline', 'style' => 'margin: 0;')) }}
+				<label><h4>Section {{ $section }}</h4></label>
+				@if (!count($section_requests) == 0)
+				    Message:
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="all">All requesters</button>
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="pending">Pending</button>
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="denied">Denied</button>
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="granted">Granted</button>
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="inactive">Inactive</button>
+				    <button class="btn btn-link btn-small" type="submit" name="who" value="expired">Expired</button>
+				    <input type="hidden" name="course" value="{{ $course }}" />
+				    <input type="hidden" name="section" value="{{ $section }}" />
+				@endif
+			    {{ Form::close() }}
 			    @if (count($section_requests) == 0)
 				<div class="well" style="text-align: center;">
 				    <h3>No Requests</h3>

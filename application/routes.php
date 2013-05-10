@@ -61,11 +61,9 @@ Route::group(array('before' => 'auth'), function() {
 
     Route::get('/profile', array('as' => 'profile', 'uses' => 'account@profile'));
     Route::get('/messages', array('as' => 'messages', 'uses' => 'messages@messages'));
-    Route::get('/messages/compose', array('as' => 'messages_compose', 'uses' => 'messages@compose'));
-    Route::get('/messages/sent', array('as' => 'messages_sent', 'uses' => 'messages@sent'));
-    Route::get('/messages/received', array('as' => 'messages_received', 'uses' => 'messages@received'));
 
-    Route::post('/messages/compose', array('uses' => 'messages@compose'));
+    Route::post('/messages/compose', array('as' => 'messages_compose', 'uses' => 'messages@compose'));
+    Route::post('/messages/create', array('uses' => 'messages@create'));
 
 });
 
