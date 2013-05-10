@@ -5,6 +5,9 @@ http://cs336-52.rutgers.edu/public
 
 If you would like to see the code, you can also view the project on github: 
 https://github.com/pilliq/orangehippowolf
+All commits after 32b2a260d0 (commit message: "The big one") are changes after
+the due date of the project. It might be easier to view the diffs of the code
+on github. 
 
 Things that are changed in this version of the project:
     - Added ability for instructor to create a course offering
