@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python ~/dit/accounts.py
+php ~/dit/data.php

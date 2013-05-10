@@ -1,0 +1,45 @@
+#s|first_name|last_name|ruid|netid|email|password|graduation_month|graduation_year|major_credits|total_credits|gpa
+#i|first_name|last_name|netid|email|password|department
+#
+i|Liz|Rooney|lrooney|lrooney@gmail.com|password|Computer Science
+i|Alex|Borgida|aborgida|borgida@gmail.com|password|Computer Science
+i|Jim|Henson|jimhenson|jimhenson@gmail.com|password|Computer Science
+i|Marco|Grutesor|marcogru|marco@gmail.com|password|Computer Science
+i|Ricardo|Bianchini|ricardob|ricardob@gmail.com|password|Computer Science
+i|Douglas|DeCarlo|decarlo|decarlo@gmail.com|password|Computer Science
+i|Martin|Farach-Colton|farach|farach@gmail.com|password|Computer Science
+i|Michael|Fredman|fredman|fredman@gmail.com|password|Computer Science
+i|Ulrich|Kremer|kremer|kremer@gmail.com|password|Computer Science
+i|Badri|Nath|bnath|bnath@gmail.com|password|Computer Science
+i|andrew|Tjang|atjang|atjang@gmail.com|password|Computer Science
+#
+#
+#
+s|Joseph|Calvano|12700000023|jscalvano|jscalvano@gmail.com|password|January|2014|56|120|4.000|CS|CHEM|MATH
+s|Phillip|Quiza|14123243437|pquiza|pquiza@gmail.com|password|January|2014|56|120|4.000|CS|MATH| 
+s|Joshua|Beninson|14565234437|joshbeni|jbeni@gmail.com|password|December|2013|56|120|4.000|ECE|| 
+s|Sally|Field|14525233687|sallyfield|sally@gmail.com|password|January|2014|60|63|2.145|CS|| 
+s|Allen|Chandler|48394134323|achand|allenc@gmail.com|password|May|2014|80|90|1.944|CS|| 
+s|Jason|Kelch|14447103844|jasonkelch|jason@gmail.com|password|January|2015|25|35|2.064|MATH|| 
+s|Jennifer|Richey|54862345153|jennrich|jennrich@gmail.com|password|December|2014|33|60|3.932|CS|| 
+s|Doug|Anderson|53489653241|dougand|dougand@gmail.com|password|May|2015|30|66|1.879|POLSCI|PHYS|ART 
+s|Carl|Anderson|56983125324|carlanders|canderson@gmail.com|password|January|2015|50|84|1.879|CS|| 
+s|Kimberly|Calvano|56542395613|kimcalvano|kimcalvano@gmail.com|password|January|2015|50|70|2.312|CS|| 
+s|Jessica|Quiza|56542535156|jessquiza|jessquiza@gmail.com|password|October|2013|44|90|3.020|ECON|| 
+s|Don|Johnson|55485635123|donjohn|donjohnson@gmail.com|password|October|2014|50|60|3.687|ECON|POLY| 
+s|Elie|Rosen|54236210089|erosen|erosen@gmail.com|password|January|2015|30|43|2.264|CS|EE| 
+s|Dylan|Kohan|14278963524|dylkohan|dylkohan@gmail.com|password|December|2015|45|77|3.125|CS|| 
+s|Juan|Ruiz|65254232156|juano|juanruiz@gmail.com|password|December|2015|50|77|3.887|CS|| 
+#
+s|low|gpa1|12345251243|lowgpa1|lowgpa1@gmail.com|password|January|2014|28|40|2.000|CS|| 
+s|low|gpa2|23545853793|lowgpa2|lowgpa2@gmail.com|password|January|2014|28|40|2.000|CS|| 
+s|not|cs1|78235423544|notcs1|notcs1@gmail.com|password|January|2014|28|40|2.000|MATH|ECE|PHYS
+s|not|cs2|45445367891|notcs2|notcs2@gmail.com|password|January|2014|28|40|2.000|ECE|ART| 
+#
+s|no|prereq1|12321232145|noprereq1|noprereq1@gmail.com|password|January|2014|28|40|4.000|CS|| 
+s|no|prereq2|12355365884|noprereq2|noprereq2@gmail.com|password|January|2014|28|40|4.000|CS|ART| 
+s|low|prereqgpa1|12545468612|lowprereqgpa1|lowprereqgpa1@gmail.com|password|January|2014|28|40|4.000|CS|MATH|DANCE
+s|low|prereqgpa2|54252354234|lowprereqgpa2|lowprereqgpa2@gmail.com|password|January|2014|28|40|4.000|CS|| 
+#
+#Graduation Months
+#January/October/May/December/
